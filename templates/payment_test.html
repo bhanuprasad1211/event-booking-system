@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Razorpay Test</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+<button id="pay-btn">Pay Now</button>
+
+<script>
+
+const options = {
+
+    key: "rzp_test_StsFqZ6AuLIlf6",
+
+    amount: 499800,
+
+    currency: "INR",
+
+    name: "Event Booking",
+
+    description: "Test Payment",
+
+    order_id: "order_StwxxRf4e7Cw9G",
+
+    handler: function (response) {
+
+        console.log("PAYMENT SUCCESS");
+
+        console.log(response);
+
+        /*
+        response contains:
+
+        razorpay_payment_id
+        razorpay_order_id
+        razorpay_signature
+        */
+
+        fetch("http://localhost:8000/api/payments/verify/", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json",
+
+                "Authorization": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzkwMTQ1LCJpYXQiOjE3Nzk3ODY1NDUsImp0aSI6ImFhNmU3YzAxMzU2MjRmYjFhMjFhNWIzZTlmMDdhZTlmIiwidXNlcl9pZCI6IjIifQ.5Trrh5wbuHrz8wxofDT6BNqoZ9g0_soV2inStrPbv1Q"
+            },
+
+            body: JSON.stringify({
+
+                razorpay_payment_id:
+                    response.razorpay_payment_id,
+
+                razorpay_order_id:
+                    response.razorpay_order_id,
+
+                razorpay_signature:
+                    response.razorpay_signature
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            console.log(data);
+
+            alert("Payment verified!");
+        });
+    }
+};
+
+const rzp = new Razorpay(options);
+
+document.getElementById('pay-btn').onclick = function(e) {
+
+    rzp.open();
+
+    e.preventDefault();
+}
+
+</script>
+
+</body>
+</html>

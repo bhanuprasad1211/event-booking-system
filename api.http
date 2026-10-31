@@ -1,0 +1,252 @@
+### Login to get JWT token
+### Create event with authentication
+GET http://127.0.0.1:8000/api/bookings/my-tickets/
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5ODgyMzk3LCJpYXQiOjE3Nzk4Nzg3OTcsImp0aSI6IjI0NTYwMDdjMjkyODRkNzJhNTRkYjcyOWNlOTQyZDU4IiwidXNlcl9pZCI6IjIifQ.i6wR5GZKE9ts3bpzYZoBaQrlw_qJTtKWtJIMS__3RwQ
+
+###
+
+GET http://127.0.0.1:8000/api/events/
+
+###
+
+POST http://127.0.0.1:8000/api/users/login/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5ODYxNTE2LCJpYXQiOjE3Nzk4NTc5MTYsImp0aSI6IjEwYzVmZmI1ZDJmMDQ3MjBiOGI4OTY0ZTgxN2EwYjkwIiwidXNlcl9pZCI6IjUifQ.a1vZEzD1SmSisUPatbHWeAJ-XYqm2KgGAYWHK23vFMY
+
+###
+
+POST http://127.0.0.1:8000/api/users/register/
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "email": "test@gmail.com",
+    "password": "test12345"
+}
+
+###
+
+POST  http://localhost:8000/api/payments/create-order/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzkwMTQ1LCJpYXQiOjE3Nzk3ODY1NDUsImp0aSI6ImFhNmU3YzAxMzU2MjRmYjFhMjFhNWIzZTlmMDdhZTlmIiwidXNlcl9pZCI6IjIifQ.5Trrh5wbuHrz8wxofDT6BNqoZ9g0_soV2inStrPbv1Q
+
+{
+  "event_id": 2,
+  "ticket_count": 2
+}
+
+###
+
+GET http://localhost:8000/api/events/2/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzY4NzMwLCJpYXQiOjE3Nzk3NjUxMzAsImp0aSI6IjZmZjE4N2FlNzFmMzRlMjBiM2Y3MDZhYWY1YTA3ZDdlIiwidXNlcl9pZCI6IjUifQ.JV3zb-asezttsX53lWfapcnhFjHIamKisQbxdSYches
+
+
+###
+
+GET http://localhost:8000/api/analytics/booking-trends/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzY1MjgwLCJpYXQiOjE3Nzk3NjE2ODAsImp0aSI6IjcxZjRmMzhkMzljOTQ2ZDU5Y2YzNjlmZjY0MzE4NDNkIiwidXNlcl9pZCI6IjQifQ.VY0ypqUJ-ofbX-iLCJOkIPgUe6KqI_kaPLRXyKGV4qM
+
+
+###
+
+GET http://localhost:8000/api/analytics/dashboard/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzY1MjgwLCJpYXQiOjE3Nzk3NjE2ODAsImp0aSI6IjcxZjRmMzhkMzljOTQ2ZDU5Y2YzNjlmZjY0MzE4NDNkIiwidXNlcl9pZCI6IjQifQ.VY0ypqUJ-ofbX-iLCJOkIPgUe6KqI_kaPLRXyKGV4qM
+
+###
+
+POST  http://localhost:8000/api/checkin/checkin/469063dc-7090-4b4c-a8da-67b8e1c31bb2/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzY2OTU1LCJpYXQiOjE3Nzk3NjMzNTUsImp0aSI6IjBkMGNlM2NkNmY2ODQwZDM5MDliZmRiNDViYjBiNDI0IiwidXNlcl9pZCI6IjUifQ.imCH4uPSrBlJeZhuTH8mSITYT_UhrYJJK5HfUtAjllE
+
+###
+
+GET http://localhost:8000/api/checkin/verify/469063dc-7090-4b4c-a8da-67b8e1c31bb2/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzY2OTU1LCJpYXQiOjE3Nzk3NjMzNTUsImp0aSI6IjBkMGNlM2NkNmY2ODQwZDM5MDliZmRiNDViYjBiNDI0IiwidXNlcl9pZCI6IjUifQ.imCH4uPSrBlJeZhuTH8mSITYT_UhrYJJK5HfUtAjllE
+
+###
+
+POST http://localhost:8000/api/bookings/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzczMTcyLCJpYXQiOjE3Nzk3Njk1NzIsImp0aSI6IjYyYzlkOTcyODM1ZTRiODRhZWZmZDRkN2ZiYzIzNWYwIiwidXNlcl9pZCI6IjMifQ.UQ_gnOjjAUVelBis59ZI8UKOlqLrizDJyIDsU1nTF6Y
+
+{
+    "event_id": 2,
+    "ticket_count": 5
+}
+
+
+###
+
+GET http://localhost:8000//api/bookings/my-bookings/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzI2NjIwLCJpYXQiOjE3Nzk3MjMwMjAsImp0aSI6IjU0ZjNjZTAzZmNlNzRhYmRiMWJjZGY1Y2YyNWE2N2ExIiwidXNlcl9pZCI6IjQifQ.Ef-3Dzn_ufIJV0q_PDYs-Xb_e5pw77A7ZrVez-nCRP0
+
+
+###
+
+POST http://localhost:8000/api/bookings/cancel/4/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzY4MDg0LCJpYXQiOjE3Nzk3NjQ0ODQsImp0aSI6IjQyZDdlNzBlNjQyNDRlNTRiNjgzNGQ4Njg2N2ViYjA4IiwidXNlcl9pZCI6IjQifQ.UQFQz-SC3qnyiTpu9XXq_3Z_6eCHU9e1Srzd_uDH4Tg
+
+###
+
+POST http://localhost:8000/api/bookings/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzczNTMyLCJpYXQiOjE3Nzk3Njk5MzIsImp0aSI6IjhiZjMxYTc2MGViMDRhMTJiNGE4MDlmZjA1NjlkNjM2IiwidXNlcl9pZCI6IjIifQ.e7-qEesOYZKAfEeUApI4gMDRvx4Zvu50XPE-vtJSH9k
+
+{
+  "event_id": 2,
+  "ticket_count": 2
+}
+
+###
+
+GET http://localhost:8000/api/events/my-events/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3OTczMTgxLCJpYXQiOjE3Nzc5Njk1ODEsImp0aSI6IjhhYjkyZTYxYzVmMTRkOGNiMGVhZjJhZjFlYmNkYjAxIiwidXNlcl9pZCI6IjQifQ.C_PSSztRhUFhRxv5aRBUN_lmRM9yY-R5yFM701Iq2dQ
+
+
+###
+GET http://localhost:8000/api/events/?search=music
+
+
+###
+
+POST http://localhost:8000/api/events/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3NjUzMzcxLCJpYXQiOjE3Nzc2NDk3NzEsImp0aSI6ImMyYjFlNjlkNGI0NDQxMGU4MTlmZTRlY2YzMzcwMjU3IiwidXNlcl9pZCI6IjQifQ.8RNc5x8oU4UFG7JYK0gDWBYqK3vPs9ejTqHOu6rYdc8
+
+{
+    "title": "Music Fest",
+    "description": "Live concert",
+    "category": "CONCERT",
+    "location": "Hyderabad",
+    "date_time": "2026-06-10T18:00:00",
+    "capacity": 100,
+    "available_tickets":100,
+    "price": 499.00,
+    "is_published": true
+}
+
+###
+
+POST http://localhost:8000/api/events/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NzczMTcyLCJpYXQiOjE3Nzk3Njk1NzIsImp0aSI6IjYyYzlkOTcyODM1ZTRiODRhZWZmZDRkN2ZiYzIzNWYwIiwidXNlcl9pZCI6IjMifQ.UQ_gnOjjAUVelBis59ZI8UKOlqLrizDJyIDsU1nTF6Y
+
+{
+    "title": "AI & ML Conference 2026",
+    "description": "International conference on artificial intelligence and machine learning innovations",
+    "category": "CONFERENCE",
+    "location": "Bangalore",
+    "date_time": "2026-08-15T09:00:00",
+    "capacity": 500,
+    "available_tickets": 500,
+    "price": 2499.00,
+    "is_published": true
+}
+
+
+###
+
+
+POST http://localhost:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "username": "bhanuprasad1211",
+    "password": "admin"
+}
+
+
+###
+
+POST http://localhost:8000/api/users/register/
+Content-Type: application/json
+
+{
+    "username": "banny",
+    "email": "banny@gmail.com",
+    "password": "banny123",
+    "password2": "banny123",
+    "phone": "1234567890"
+}
+
+
+###
+
+
+POST http://localhost:8000/api/events/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5ODY1NTYxLCJpYXQiOjE3Nzk4NjE5NjEsImp0aSI6IjY0YWE3YzFmMDdkNzQ5OTU4M2Q1M2U5M2U4NmY1NTA2IiwidXNlcl9pZCI6IjIifQ.lifjfuuzfsP4b5Te6v9u0Y7W6VzLAvvTKNN7ahYfSlw
+
+{
+    "title": "National Basketball Championship",
+    "description": "Professional basketball tournament featuring top teams from across the country",
+    "category": "SPORTS",
+    "location": "Bangalore",
+    "date_time": "2027-09-25T18:00:00",
+    "capacity": 10000,
+    "available_tickets": 10000,
+    "price": 1299.00,
+    "is_published":false
+}
+
+###
+
+GET http://localhost:8000/api/events/4/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5ODY1NTYxLCJpYXQiOjE3Nzk4NjE5NjEsImp0aSI6IjY0YWE3YzFmMDdkNzQ5OTU4M2Q1M2U5M2U4NmY1NTA2IiwidXNlcl9pZCI6IjIifQ.lifjfuuzfsP4b5Te6v9u0Y7W6VzLAvvTKNN7ahYfSlw
+
+
+###
+
+
+POST http://localhost:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+
+###
+
+
+GET http://localhost:8000/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3OTczMTgxLCJpYXQiOjE3Nzc5Njk1ODEsImp0aSI6IjhhYjkyZTYxYzVmMTRkOGNiMGVhZjJhZjFlYmNkYjAxIiwidXNlcl9pZCI6IjQifQ.C_PSSztRhUFhRxv5aRBUN_lmRM9yY-R5yFM701Iq2dQ
+
+###
+
+
+POST http://localhost:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "username": "banny",
+    "password": "banny123"
+}
+
+###
+
+POST http://localhost:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "username": "bhanuprasad1211",
+    "password": "admin"
+}
+
+###
+
+POST http://localhost:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "username": "testuser1",
+    "password": "testuser1"
+}

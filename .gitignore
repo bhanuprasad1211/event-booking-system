@@ -1,0 +1,84 @@
+# ==============================================================================
+# PYTHON / DJANGO CONFIGURATION
+# ==============================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+pyenv/
+
+# Django local database (SQLite)
+*.sqlite3
+db.sqlite3
+
+# Django media & static collection
+media/
+/static_collected/
+staticfiles/
+
+# Logs and backups
+*.log
+*.bak
+
+# Testing & coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# ==============================================================================
+# NODE.JS / REACT CONFIGURATION
+# ==============================================================================
+# Dependencies
+node_modules/
+/jspm_packages/
+
+# Production build outputs
+build/
+dist/
+out/
+
+# Caches and logs
+.eslintcache
+.node_repl_history
+*.tgz
+package-lock.json.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+coverage/
+
+# ==============================================================================
+# SECURITY / ENVIRONMENT VARIABLES (NEVER COMMIT THESE)
+# ==============================================================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# ==============================================================================
+# OS & IDE CONFIGURATIONS
+# ==============================================================================
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
