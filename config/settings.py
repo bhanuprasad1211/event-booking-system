@@ -33,9 +33,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') == 'True'
-ALLOWED_HOSTS = []
 
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -66,6 +66,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -97,21 +98,28 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+import dj_database_url # Make sure this is imported at the top of settings.py!
+import os
 
-        'NAME': 'event_booking',
-
-        'USER': 'postgres',
-
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
+# If DATABASE_URL exists (Production), use it. Otherwise, use your local Postgres.
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'event_booking',
+            'USER': 'postgres',
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
@@ -191,8 +199,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 STATIC_URL = 'static/'
-
-STATIC_ROOT=BASE_DIR /'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS=['event_booking_system/static']
 
 MEDIA_URL = '/media/'
@@ -257,8 +264,12 @@ LOGGING = {
 RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID')
 RAZORPAY_KEY_SECRET = os.getenv('RAZORPAY_KEY_SECRET')
 
+# Keep localhost for testing
 CORS_ALLOWED_ORIGINS = [
-
     "http://localhost:5173",
-    "http://localhost:5174",
+    "http://127.0.0.1:5173",
 ]
+
+# Add the production React URL if we set it in the deployment dashboard
+if os.environ.get('FRONTEND_URL'):
+    CORS_ALLOWED_ORIGINS.append(os.environ.get('FRONTEND_URL'))
